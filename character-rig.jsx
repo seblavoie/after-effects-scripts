@@ -1,3 +1,7 @@
+/**
+ * Automated setup for character rigs
+ * 
+ */
 app.beginUndoGroup("Add character")
 
 var activeComp = app.project.activeItem;

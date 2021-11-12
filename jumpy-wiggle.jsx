@@ -1,4 +1,8 @@
-app.beginUndoGroup("Add character")
+/**
+ * Adds a couple of low fps wiggle 
+ * presets on current layer
+ */
+app.beginUndoGroup("jumpy wiggle")
 
 var activeComp = app.project.activeItem;
 var selectedLayer = activeComp.selectedLayers[0];

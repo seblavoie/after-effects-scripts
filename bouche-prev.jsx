@@ -1,3 +1,8 @@
+/**
+ * Helper to change sliders on controller layers
+ * Used mainly with mouth animation or other sprites
+ */
+
 // The action to be performed. Next is 1, Prev is -1.
 concat = -1;
 activeComp = app.project.activeItem

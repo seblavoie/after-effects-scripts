@@ -1,3 +1,8 @@
+/**
+ * Renders the picture viewer as a png file and 
+ * saves it as a png file in a ~/Desktop/Frames
+ */
+
 var _renderCurrentFrame = function(comp) {
 
   system.callSystem("cd ~/Desktop && mkdir frames && open .");

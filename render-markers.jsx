@@ -1,3 +1,8 @@
+/**
+ * This script renders all markers in current composition 
+ * and saves them as png files on desktop
+ */
+
 var _renderMarkers = function(comp) {
   var images = [];
   var markers = comp.markerProperty;
