@@ -1,10 +1,7 @@
-/**
- * Automated setup for character rigs
- * 
- */
 app.beginUndoGroup("Add character")
 
 var activeComp = app.project.activeItem;
+
 var wiggleExpression = 'seedRandom(index); \
 if(thisComp.layer("Controller").effect("Wiggle active?")("Checkbox") == 1) { \
 wiggle(thisComp.layer("Controller").effect("Freq")("Slider"), thisComp.layer("Controller").effect("Amp")("Slider")) \
@@ -12,24 +9,42 @@ wiggle(thisComp.layer("Controller").effect("Freq")("Slider"), thisComp.layer("Co
 value \
 }';
 
+var eyesExpression = 'effect("Eyes closed!")("Checkbox") == 1 ? 1 : loopOut()'
+
 // Adding controller layer
 var controllerLayer = activeComp.layers.addNull(activeComp.duration);
 controllerLayer.name = "Controller";
 controllerLayer.enabled = false
 effect = controllerLayer.Effects.addProperty("Slider Control");
+effect.name = "Mouth"
+effect.property("Slider").setValueAtTime(0, 0)
+
+effect = controllerLayer.Effects.addProperty("Slider Control");
 effect.name = "Freq"
+
 effect.property("Slider").setValue(.6)
 effect = controllerLayer.Effects.addProperty("Slider Control");
 effect.name = "Amp"
+
 effect.property("Slider").setValue(4)
 effect = controllerLayer.Effects.addProperty("Slider Control");
 effect.name = "Wiggle"
+
 effect.property("Slider").expression = wiggleExpression
 effect = controllerLayer.Effects.addProperty("Checkbox Control");
 effect.name = "Wiggle active?"
-effect = controllerLayer.Effects.addProperty("Slider Control");
-effect.name = "Bouche"
 
+effect = controllerLayer.Effects.addProperty("Checkbox Control");
+effect.name = "Eyes closed!"
+
+effect = controllerLayer.Effects.addProperty("Checkbox Control");
+effect.name = "Eyes closed?"
+effect.property("Checkbox").setValueAtTime(0, 0)
+effect.property("Checkbox").setValueAtTime(0.5, 1)
+effect.property("Checkbox").setValueAtTime(0.6, 0)
+effect.property("Checkbox").setValueAtTime(1.2, 1)
+effect.property("Checkbox").setValueAtTime(1.3, 0)
+effect.property("Checkbox").expression = eyesExpression
 
 
 // Adding character layer
